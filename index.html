@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Dapp</title>
+  </head>
+  <body>
+    <h1>اتصال به کیف پول</h1>
+    <button onclick="connectWallet()">اتصال به والت</button>
+
+    <script>
+      async function connectWallet() {
+        if (window.ethereum) {
+          try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            alert('اتصال با موفقیت انجام شد: ' + accounts[0]);
+          } catch (error) {
+            alert('خطا در اتصال: ' + error.message);
+          }
+        } else {
+          alert('کیف پول متامسک یا مشابه نصب نیست!');
+        }
+      }
+    </script>
+  </body>
+</html>
